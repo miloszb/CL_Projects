@@ -9,14 +9,14 @@ function listBooks(json) {
 }
 $(function(){
     $.ajax({
-            url:'http://localhost/CL_Projects/REST_API/api/books.php',
+            url:'../books.php',
             method: 'GET'
     }).done(listBooks);
     $('#bookCatalog').on('click', '.bookEntry', function() {
         var bookId = $(this).data('book');
         var bookLink = $(this).next('a');
         $.ajax({
-                url:'http://localhost/CL_Projects/REST_API/api/books.php',
+                url:'../books.php',
                 method: 'GET',
                 data: {
                     id: bookId
@@ -26,7 +26,7 @@ $(function(){
             if (!descrDiv.length) {
                 var descr = response.description;
                 bookLink.after($('<div class="bookDescr" data-descr="' 
-                        + bookId +'">' + descr + '</div>'));
+                        + bookId + '">' + descr + '</div>'));
             } else {
                 descrDiv.remove();
             }
@@ -35,7 +35,7 @@ $(function(){
     $('#bookCatalog').on('click', '.bookDelete', function() {
         var bookId = $(this).data('delete');
         $.ajax({
-                url:'http://localhost/CL_Projects/REST_API/api/books.php',
+                url:'../books.php',
                 method: 'DELETE',
                 data: {
                     id: bookId
@@ -44,7 +44,7 @@ $(function(){
             if (response === 'BOOK SUCCESSFULLY DELETED') {
                 $('#bookCatalog').empty();
                 $.ajax({
-                        url:'http://localhost/CL_Projects/REST_API/api/books.php',
+                        url:'../books.php',
                         method: 'GET'
                 }).done(listBooks);
             } else {
@@ -61,7 +61,7 @@ $(function(){
             alert('Proszę podać autora i tytuł');
         } else {
             $.ajax({
-                    url:'http://localhost/CL_Projects/REST_API/api/books.php',
+                    url:'../books.php',
                     method: 'POST',
                     data: {
                         title: title,
@@ -72,7 +72,7 @@ $(function(){
                 if (response === 'BOOK SUCCESSFULLY ADDED') {
                     $('#bookCatalog').empty();
                     $.ajax({
-                            url:'http://localhost/CL_Projects/REST_API/api/books.php',
+                            url:'../books.php',
                             method: 'GET'
                     }).done(listBooks);
                 } else {
