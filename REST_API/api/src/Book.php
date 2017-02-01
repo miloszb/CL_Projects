@@ -64,7 +64,7 @@ class Book implements JsonSerializable
             return $this->get($db, $this->id);
         } else {
             $sql = sprintf(
-                'UPDATE book SET title = "%s", author = "%s" description = "%s"'
+                'UPDATE book SET title = "%s", author = "%s", description = "%s"'
                         . ' WHERE id = %s',
                 $this->title,
                 $this->author,

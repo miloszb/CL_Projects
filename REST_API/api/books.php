@@ -26,7 +26,6 @@ switch($_SERVER['REQUEST_METHOD']){
                     echo json_encode('BOOK SUCCESSFULLY ADDED');
                 } else {
                     echo json_encode('ADD FAILED');
-                    
                 }
             } else {
                 echo json_encode('TITLE AND AUTHOR ARE REQUIRED!');
@@ -44,7 +43,22 @@ switch($_SERVER['REQUEST_METHOD']){
             }
         break;
     case 'PUT':
-            echo 'EDYCJA';
+            parse_str(file_get_contents("php://input"), $put_vars);
+            if (isset($put_vars['id'])) {
+                $book = new Book();
+                $book->get($db, $put_vars['id']);
+                $book->setTitle($put_vars['title']);
+                $book->setAuthor($put_vars['author']);
+                $book->setDescription($put_vars['description']);
+                $book->save($db);
+                if ($book->getID() != -1) {
+                    echo json_encode('BOOK SUCCESSFULLY UPDATED');
+                } else {
+                    echo json_encode('UPDATE FAILED');
+                }
+            } else {
+                echo json_encode('NO ID');
+            }
         break;
     case 'DELETE':
             parse_str(file_get_contents("php://input"), $del_vars);

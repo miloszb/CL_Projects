@@ -11,13 +11,16 @@
             margin-top: 0;
             margin-bottom: 0.5em;
         }
+        .bookUpdate {
+            margin-right: 0.5em;
+        }
         .catTitle {
             margin-bottom: 0;
         }
     </style>
 </head>
 <body>
-<form id="addBook" action="#" method="post">
+<form id="bookForm" action="#" method="post">
     <fieldset>
         <legend>Nowa książka</legend>
         <label>
@@ -32,7 +35,7 @@
             Opis:
             <br><textarea name="description" rows="5" cols="33"></textarea>
         </label>
-        <br><button type="submit" name="add">Dodaj książkę</button>
+        <br><button type="submit">Dodaj książkę</button>
     </fieldset>
 </form>
 <h3 class="catTitle">Księgozbiór</h3>
