@@ -123,7 +123,7 @@ $(function(){
                         author: author,
                         description: description
                     }
-            }).always(function(response) {
+            }).done(function(response) {
                 if (response === 'BOOK SUCCESSFULLY UPDATED') {
                     $('#bookCatalog').empty();
                     $.ajax({
