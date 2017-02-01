@@ -159,27 +159,5 @@ $(function(){
             });
         }
         return false;
-        
-//            $.ajax({
-//                    url:'api/books.php',
-//                    method: 'POST',
-//                    data: {
-//                        title: title,
-//                        author: author,
-//                        description: description
-//                    }
-//            }).done(function(response) {
-//                if (response === 'BOOK SUCCESSFULLY ADDED') {
-//                    $('#bookCatalog').empty();
-//                    $.ajax({
-//                            url:'api/books.php',
-//                            method: 'GET'
-//                    }).done(listBooks);
-//                } else {
-//                    $('<div>' + response + '</div>').appendTo('#bookCatalog');
-//                }
-//            });
-//        }
-//        return false;
     });
 });
