@@ -1,7 +1,11 @@
-var formLegendAdd = 'Nowa książka';
-var formLegendUpdate = 'Zmiana danych';
-var buttonTextAdd = 'Dodaj książkę';
-var buttonTextUpdate = 'Wprowadź zmiany';
+// i18n
+var updateLinkText = 'Edit';
+var deleteLinkText = 'Delete';
+
+var formLegendAdd = 'New book';
+var formLegendUpdate = 'Update record';
+var buttonTextAdd = 'Add';
+var buttonTextUpdate = 'Update';
 var formUpdateMode = false;
 
 function setFormUpdateMode(updateMode) {
@@ -21,7 +25,6 @@ function setFormUpdateMode(updateMode) {
         return false;
     }
 }
-
 function listBooks(json) {
     json.forEach(function(book) {
         var bookEntry = '<br><h4 class="bookEntry" data-book="' 
@@ -29,13 +32,14 @@ function listBooks(json) {
                 + book.author + ': ' 
                 + book.title + '</h4> ';
         var updateLink = '<a href="" class="bookUpdate" data-update="' 
-                + book.id + '">Edytuj</a>';
+                + book.id + '">'
+                + updateLinkText + '</a>';
         var deleteLink = '<a href="" class="bookDelete" data-delete="' 
-                + book.id + '">Usuń</a>';
+                + book.id + '">'
+                + deleteLinkText + '</a>';
         $('#bookCatalog').append($(bookEntry + updateLink + deleteLink));
     });
 }
-
 $(function(){
     var bookForm = $('#bookForm');
     $.ajax({
@@ -44,7 +48,7 @@ $(function(){
     }).done(listBooks);
     $('#bookCatalog').on('click', '.bookEntry', function() {
         var bookId = $(this).data('book');
-        var bookLink = $(this).next('a').next('a');
+        var bookLink = $(this).nextAll('a').eq(1);
         $.ajax({
                 url:'api/books.php',
                 method: 'GET',

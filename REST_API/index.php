@@ -22,23 +22,23 @@
 <body>
 <form id="bookForm" action="#" method="post">
     <fieldset>
-        <legend>Nowa książka</legend>
+        <legend>New book</legend>
         <label>
-            Autor:
+            Author:
             <br><input type="text" name="author">
         </label>
         <br><label>
-            Tytuł:
+            Title:
             <br><input type="text" name="title">
         </label>
         <br><label>
-            Opis:
+            Description:
             <br><textarea name="description" rows="5" cols="33"></textarea>
         </label>
-        <br><button type="submit">Dodaj książkę</button>
+        <br><button type="submit">Add</button>
     </fieldset>
 </form>
-<h3 class="catTitle">Księgozbiór</h3>
+<h3 class="catTitle">Our Books (click title for details)</h3>
 <div id="bookCatalog">
 
 </div>
