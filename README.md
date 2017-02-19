@@ -8,4 +8,5 @@ Exercises from the Back-End Developer Course at Coders Lab
 * The user needs to provide database connection details in REST_API/api/config.php
 * A sample database dump is in REST_API/books_db.sql
 
-### To be continued...
+### AdressBook
+* An ORM exercise in Symfony 2.8.
