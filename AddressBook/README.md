@@ -1,4 +1,4 @@
 AddressBook
 ===========
 
-A Symfony project created on February 17, 2017, 2:29 pm.
+A Symfony 2.8 exercise with minimal UI in Polish.
