@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContactRepository extends EntityRepository
 {
+    public function findBySearch($searchstr)
+    {
+        $dql = 'SELECT c 
+                FROM CLBundle:Contact c 
+                WHERE c.name LIKE :searchstr OR c.surname LIKE :searchstr 
+                ORDER BY c.surname ASC';
+        return $this
+            ->getEntityManager()
+            ->createQuery($dql)
+            ->setParameter('searchstr', '%'.$searchstr.'%')
+            ->getResult();
+    }
 }

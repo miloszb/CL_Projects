@@ -23,6 +23,7 @@ class ContactController extends Controller
 {
     /**
      * @Route("/")
+     * @Method("GET")
      * @Template()
      */
     public function showAllAction()
@@ -35,6 +36,26 @@ class ContactController extends Controller
             $contacts = [];
         }
         return ['contacts' => $contacts];
+    }
+
+    /**
+     * @Route("/")
+     * @Method("POST")
+     * @Template("CLBundle:Contact:showAll.html.twig")
+     */
+    public function showSearchAction(Request $request)
+    {
+        $searchstr = $request->request->get('search');
+        $em = $this
+            ->getDoctrine()
+            ->getEntityManager();
+        $contacts = $em
+            ->getRepository('CLBundle:Contact')
+            ->findBySearch($searchstr);
+        if (!$contacts) {
+            $contacts = [];
+        }
+        return ['contacts' => $contacts, 'searchmode' => true];
     }
 
     /**

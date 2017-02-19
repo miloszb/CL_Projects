@@ -5,8 +5,16 @@
 {% block topnav %}{% endblock %}
 
 {% block body %}
+    <form method="post">
+        <input type="text" name="search">
+        <input type="submit" value="Szukaj">
+    </form>
     {% if contacts is not empty %}
-        <p>Kontakty:</p>
+        {% if searchmode is not defined %}
+            <p>Kontakty:</p>
+        {% else %}
+            <p>Wyniki wyszukiwania:</p>
+        {% endif %}
         <ul>
         {% for contact in contacts %}
             <li>
@@ -23,7 +31,14 @@
         {% endfor %}
         </ul>
     {% else %}
-        <p>Książka adresowa jest pusta.</p>
+        {% if searchmode is not defined %}
+            <p>Książka adresowa jest pusta.</p>
+        {% else %}
+            <p>Nie znaleziono pasujących kontaktów.</p>
+        {% endif %}
+    {% endif %}
+    {% if searchmode is defined %}
+        <p><a href="{{ path('cl_contact_showall') }}">Wszystkie kontakty</a></p>
     {% endif %}
     <p><a href="{{ path('cl_contact_new') }}">Dodaj kontakt</a></p>
     <p><a href="{{ path('cl_contact_showgroups') }}">Grupy</a></p>
