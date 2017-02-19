@@ -1,3 +1,6 @@
 /nbproject/
+.idea/
 /REST_API/Explo/
 /REST_API/api/config.php
+
+/vendor/

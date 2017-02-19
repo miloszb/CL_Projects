@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Książka adresowa - grupa{% endblock %}
+
+{% block top %}<h3>Grupy kontaktów</h3>{% endblock %}
+{% block body %}
+    {% if groups is not empty %}
+        {% for group in groups %}
+            <p>
+                {{ group.name }}:
+                <a href="{{ path('cl_contact_modifygroup', {'id': group.id}) }}">
+                    <small>zmień</small>
+                </a>
+                <a href="{{ path('cl_contact_deletegroup', {'id': group.id}) }}">
+                    <small>usuń</small>
+                </a>
+            </p>
+            <ul>
+                {% for contact in group.contacts %}
+                    <li>
+                        <a href="{{ path('cl_contact_show', {'id': contact.id}) }}">
+                            {{ contact.name }} {{ contact.surname }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {%  endfor %}
+    {% else %}
+        <p>Nie znaleziono grup.</p>
+    {% endif %}
+    <a href="{{ path('cl_contact_addgroup') }}">Dodaj grupę</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Książka adresowa - grupa kontaktów{% endblock %}
+
+{% block top %}
+    {% if group is defined %}
+        <h3>Grupa kontaktów: {{ group.name }}</h3>
+    {% else %}
+        <h3>Nowa grupa</h3>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Zatwierdź">
+    {{ form_end(form) }}
+{% endblock %}
+

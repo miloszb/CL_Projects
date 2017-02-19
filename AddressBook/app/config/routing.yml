@@ -1,0 +1,4 @@
+cl:
+    resource: "@CLBundle/Controller/"
+    type:     annotation
+    prefix:   /

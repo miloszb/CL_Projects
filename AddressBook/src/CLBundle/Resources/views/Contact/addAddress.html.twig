@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Książka adresowa - dodaj adres{% endblock %}
+{% block topnav %}
+    <a href="{{ path('cl_contact_show', {'id': contact.id}) }}">
+        {{ contact.name }} {{ contact.surname }}
+    </a>
+{% endblock %}
+
+{% block top %}<h3>Nowy adres</h3>{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Dodaj">
+    {{ form_end(form) }}
+{% endblock %}

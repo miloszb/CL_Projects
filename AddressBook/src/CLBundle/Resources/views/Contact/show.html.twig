@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Książka adresowa - kontakt{% endblock %}
+
+{% block top %}
+    <h3>{{ contact.name }} {{ contact.surname }}</h3>
+    <a href="{{ path('cl_contact_modify', {'id': contact.id}) }}">
+        zmień
+    </a>
+{% endblock %}
+
+
+{% block body %}
+    <p>
+        E-mail:
+        <a href="{{ path('cl_contact_addemail', {'contactID': contact.id}) }}">
+            <small>dodaj</small>
+        </a>
+    </p>
+    <ul>
+        {% for email in contact.emails %}
+            <li>
+                {{ email.email }}
+                {% if email.type is not null %}({{ email.type }}){% endif %}
+                <a href="{{ path('cl_contact_deleteemail', {'contactId': contact.id, 'id': email.id}) }}">
+                    <small>usuń</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>
+        Telefon:
+        <a href="{{ path('cl_contact_addphone', {'contactID': contact.id}) }}">
+            <small>dodaj</small>
+        </a>
+    </p>
+    <ul>
+        {% for phone in contact.phones %}
+            <li>
+                {{ phone.number }}
+                {% if phone.type is not null %}({{ phone.type }}){% endif %}
+                <a href="{{ path('cl_contact_deletephone', {'contactId': contact.id, 'id': phone.id}) }}">
+                    <small>usuń</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>
+        Adres:
+        <a href="{{ path('cl_contact_addaddress', {'contactID': contact.id}) }}">
+            <small>dodaj</small>
+        </a>
+    </p>
+    <ul>
+        {% for address in contact.addresses %}
+            <li>
+                {{ address.street }} {{ address.houseNo }}{% if address.apptNo is not null %} m. {{ address.apptNo }}{% endif %},
+                {{ address.city }}
+                <a href="{{ path('cl_contact_deleteaddress', {'contactId': contact.id, 'id': address.id}) }}"><small>usuń</small></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

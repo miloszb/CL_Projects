@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Książka adresowa - kontakty{% endblock %}
+
+{% block topnav %}{% endblock %}
+
+{% block body %}
+    {% if contacts is not empty %}
+        <p>Kontakty:</p>
+        <ul>
+        {% for contact in contacts %}
+            <li>
+                <a href="{{ path('cl_contact_show', {'id': contact.id}) }}">
+                    {{ contact.name }} {{ contact.surname }}
+                </a>
+                <a href="{{ path('cl_contact_modify', {'id': contact.id}) }}">
+                    <small>zmień</small>
+                </a>
+                <a href="{{ path('cl_contact_delete', {'id': contact.id}) }}">
+                    <small>usuń</small>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Książka adresowa jest pusta.</p>
+    {% endif %}
+    <p><a href="{{ path('cl_contact_new') }}">Dodaj</a></p>
+    <p><a href="{{ path('cl_contact_showgroups') }}">Grupy</a></p>
+{% endblock %}
