@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="container">
+        <h3>{{ district.fullName }}</h3>
+        <dl>
+            {% for elList in district.elLists %}
+                <hr>
+                <h4 class="committee">{{ elList.committee.name }}
+                    <a href="{{ elList.committee.wwwPage }}">
+                        strona komitetu
+                    </a>
+                </h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nr</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>Wiek</th>
+                            <th>Zawód</th>
+                            <th>Miejsce zamieszkania</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for candidate in elList.candidates|sortbyfield('surname') %}
+                            <tr>
+                                <td>{{ candidate.elListPos }}</td>
+                                <td>{{ candidate.name }}</td>
+                                <td>{{ candidate.surname }}</td>
+                                <td>{{ candidate.age }}</td>
+                                <td>{{ candidate.occupation }}</td>
+                                <td>{{ candidate.domicile }}</td>
+                                {% if candidate.wwwPage is not null %}
+                                    <td><a href="{{ candidate.wwwPage|e }}">strona kandydata</a></td>
+                                {% else %}
+                                    <td class="dummy">strona kandydata</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </dl>
+    </div>
+{% endblock %}

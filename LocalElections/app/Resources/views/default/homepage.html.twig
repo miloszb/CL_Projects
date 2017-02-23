@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container" class="homepage">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input class="homepage" type="submit" value="Sprawdź">
+            {{ form_end(form) }}
+            {% if msg is defined %}
+                <p>{{ msg }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

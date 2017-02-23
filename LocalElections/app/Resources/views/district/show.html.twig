@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Okręg wyborczy</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nazwa jednostki</th>
+                <td>{{ district.locality }}</td>
+            </tr>
+            <tr>
+                <th>Nr okręgu</th>
+                <td>{{ district.number }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ district.description }}</td>
+            </tr>
+            <tr>
+                <th>Rodzaj</th>
+                <td>{{ district.levelName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('district_index') }}">Wszystkie</a>
+        </li>
+        <li>
+            <a href="{{ path('district_edit', { 'id': district.id }) }}">Zmień</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

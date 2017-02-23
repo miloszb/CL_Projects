@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Komitety wyborcze</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Wwwpage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for committee in committees %}
+            <tr>
+                <td><a href="{{ path('committee_show', { 'id': committee.id }) }}">{{ committee.id }}</a></td>
+                <td>{{ committee.name }}</td>
+                <td>{{ committee.description }}</td>
+                <td>{{ committee.wwwPage }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('committee_show', { 'id': committee.id }) }}">pokaż</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('committee_edit', { 'id': committee.id }) }}">Zmień</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('committee_new') }}">Dodaj komitet wyborczy</a>
+        </li>
+    </ul>
+{% endblock %}

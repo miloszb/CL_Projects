@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Kody pocztowe</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Postcode</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for postcode in postcodes %}
+            <tr>
+                <td><a href="{{ path('postcode_show', { 'id': postcode.id }) }}">{{ postcode.id }}</a></td>
+                <td>{{ postcode.postcode }}</td>
+                <td>{{ postcode.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('postcode_show', { 'id': postcode.id }) }}">pokaż</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('postcode_edit', { 'id': postcode.id }) }}">Zmień</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('postcode_new') }}">Dodaj kod pocztowy</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Dodaj okręg wyborczy</h2>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Zatwierdź" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('district_index') }}">Wszystkie</a>
+        </li>
+    </ul>
+{% endblock %}

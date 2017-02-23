@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Kandydat</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidate.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ candidate.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ candidate.surname }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ candidate.age }}</td>
+            </tr>
+            <tr>
+                <th>Occupation</th>
+                <td>{{ candidate.occupation }}</td>
+            </tr>
+            <tr>
+                <th>Domicile</th>
+                <td>{{ candidate.domicile }}</td>
+            </tr>
+            <tr>
+                <th>Wwwpage</th>
+                <td>{{ candidate.wwwPage }}</td>
+            </tr>
+            <tr>
+                <th>Wwwinfo</th>
+                <td>{{ candidate.wwwInfo }}</td>
+            </tr>
+            <tr>
+                <th>Wwwhistory</th>
+                <td>{{ candidate.wwwHistory }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('candidate_index') }}">Wszystkie</a>
+        </li>
+        <li>
+            <a href="{{ path('candidate_edit', { 'id': candidate.id }) }}">Zmień</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,60 @@
+div#wrapper {
+    width:90%;
+    margin: 20px auto;
+    font-family: "Lato", Helvetica, sans-serif;
+}
+
+div.homepage {
+    text-align: center;
+}
+
+div#top {
+    background-image: url("../images/pkw_eagle.png");
+    height: auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h2.top {
+    margin-top: 0;
+    padding-top: 80px;
+    padding-bottom: 70px;
+    padding-left: 22%;
+    color: #9d032a;
+    font-family: "Lato", Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+input.homepage {
+    margin: 10px;
+}
+
+input#appbundle_postcode_postcode {
+    margin-left: 10px;
+}
+
+h3.ward {
+    font-size: 150%;
+}
+
+h3.ward small {
+    font-size: 90%;
+}
+
+ul.districts {
+    font-size: 150%;
+    list-style-type: none;
+}
+
+a.el_lists {
+    font-size: 70%;
+}
+
+h4.committee a {
+    font-size: 80%;
+    float: right;
+}
+
+td.dummy {
+    color: #fff;
+}

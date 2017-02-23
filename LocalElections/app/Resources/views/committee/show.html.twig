@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Komitet wyborczy</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ committee.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ committee.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ committee.description }}</td>
+            </tr>
+            <tr>
+                <th>Wwwpage</th>
+                <td>{{ committee.wwwPage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('committee_index') }}">Wszystkie</a>
+        </li>
+        <li>
+            <a href="{{ path('committee_edit', { 'id': committee.id }) }}">Zmień</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

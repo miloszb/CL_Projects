@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Kod pocztowy</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ postcode.id }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ postcode.postcode }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ postcode.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('postcode_index') }}">Wszystkie</a>
+        </li>
+        <li>
+            <a href="{{ path('postcode_edit', { 'id': postcode.id }) }}">Zmień</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="container">
+        <h3>Kod pocztowy: {{ postcode }}</h3>
+        <hr>
+        {% if msg is defined %}
+            <p>{{ msg }}</p>
+        {% endif %}
+        {% if wards is defined %}
+            {% for ward in wards %}
+                <h3 class="ward">
+                    Obwód głosowania nr {{ ward.number }}
+                    <br><small>Miejsce głosowania: {{ ward.address }}</small>
+                </h3>
+                {% if ward.annotation is not null %}
+                    <p>{{ ward.annotation }}</p>
+                {% endif %}
+                <ul class="districts">
+                    {% for district in ward.districts|sortbyfield('level') %}
+                        <li>
+                            {{ district.fullname }}
+                            <a class="el_lists" href="{{ path('candidates', { 'districtId': district.id }) }}">
+                                kandydaci
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

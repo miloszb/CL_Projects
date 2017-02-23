@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Okręgi wyborcze</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa jednostki</th>
+                <th>Nr okręgu</th>
+                <th>Opis</th>
+                <th>Rodzaj</th>
+                <th>Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for district in districts %}
+            <tr>
+                <td>{{ district.id }}</td>
+                <td>{{ district.locality }}</td>
+                <td>{{ district.number }}</td>
+                <td>{{ district.description }}</td>
+                <td>{{ district.levelName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('district_show', { 'id': district.id }) }}">pokaż</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('district_edit', { 'id': district.id }) }}">zmień</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('district_new') }}">Dodaj okręg wyborczy</a>
+        </li>
+    </ul>
+{% endblock %}

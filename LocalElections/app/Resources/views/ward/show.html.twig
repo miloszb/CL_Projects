@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Obwód głosowania</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ward.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ ward.number }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ ward.address }}</td>
+            </tr>
+            <tr>
+                <th>Annotation</th>
+                <td>{{ ward.annotation }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ward.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ward_index') }}">Wszystkie</a>
+        </li>
+        <li>
+            <a href="{{ path('ward_edit', { 'id': ward.id }) }}">Zmień</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Kandydaci</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Occupation</th>
+                <th>Domicile</th>
+                <th>Wwwpage</th>
+                <th>Wwwinfo</th>
+                <th>Wwwhistory</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidate in candidates %}
+            <tr>
+                <td><a href="{{ path('candidate_show', { 'id': candidate.id }) }}">{{ candidate.id }}</a></td>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.surname }}</td>
+                <td>{{ candidate.age }}</td>
+                <td>{{ candidate.occupation }}</td>
+                <td>{{ candidate.domicile }}</td>
+                <td>{{ candidate.wwwPage }}</td>
+                <td>{{ candidate.wwwInfo }}</td>
+                <td>{{ candidate.wwwHistory }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('candidate_show', { 'id': candidate.id }) }}">pokaż</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('candidate_edit', { 'id': candidate.id }) }}">zmień</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('candidate_new') }}">Dodaj kandydata</a>
+        </li>
+    </ul>
+{% endblock %}
